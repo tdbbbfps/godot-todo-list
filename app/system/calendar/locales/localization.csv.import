@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c78v0a6840psd"
+
+[deps]
+
+files=["res://app/system/calendar/locales/localization.en.translation", "res://app/system/calendar/locales/localization.zh.translation", "res://app/system/calendar/locales/localization.jp.translation"]
+
+source_file="res://app/system/calendar/locales/localization.csv"
+dest_files=["res://app/system/calendar/locales/localization.en.translation", "res://app/system/calendar/locales/localization.zh.translation", "res://app/system/calendar/locales/localization.jp.translation"]
+
+[params]
+
+compress=true
+delimiter=0

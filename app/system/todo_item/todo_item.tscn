@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://k0c0og2qrmfm"]
+
+[ext_resource type="Script" uid="uid://ffmtcu2j5ut2" path="res://app/system/todo_item/todo_item.gd" id="1_1656k"]
+
+[node name="TodoItem" type="HBoxContainer" node_paths=PackedStringArray("serial_num", "content")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_1656k")
+serial_num = NodePath("SerialNum")
+content = NodePath("Content")
+
+[node name="SerialNum" type="Label" parent="."]
+layout_mode = 2
+text = "1."
+
+[node name="Content" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TODO"
+
+[node name="CompleteBtn" type="Button" parent="."]
+layout_mode = 2
+text = "完成"
+
+[node name="RemoveBtn" type="Button" parent="."]
+layout_mode = 2
+text = "移除"
+
+[connection signal="pressed" from="CompleteBtn" to="." method="_on_complete_btn_pressed"]
+[connection signal="pressed" from="RemoveBtn" to="." method="_on_remove_btn_pressed"]

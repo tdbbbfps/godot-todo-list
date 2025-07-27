@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg1dsquitfeqa"]
+
+[ext_resource type="Script" uid="uid://soqqacmqepao" path="res://app/system/todo_edit/todo_edit.gd" id="1_p3i08"]
+
+[node name="TodoEdit" type="HBoxContainer" node_paths=PackedStringArray("todo_input", "add_btn", "date_btn")]
+custom_minimum_size = Vector2(240, 40)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 32.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+script = ExtResource("1_p3i08")
+todo_input = NodePath("TodoInput")
+add_btn = NodePath("AddBtn")
+date_btn = NodePath("DateButton")
+
+[node name="TodoInput" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "輸入待辦事項"
+
+[node name="DateButton" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "2025-07-27"
+
+[node name="AddBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "新增"
+
+[connection signal="pressed" from="DateButton" to="." method="_on_date_button_pressed"]
+[connection signal="pressed" from="AddBtn" to="." method="_on_add_btn_pressed"]
