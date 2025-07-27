@@ -1,2 +1,3 @@
 # godot-todo-list
-A simple todo-list built in Godot
+A WIP simple todo-list built in Godot
+
