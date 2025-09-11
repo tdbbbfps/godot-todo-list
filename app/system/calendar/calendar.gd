@@ -21,6 +21,7 @@ var current_year : int = 0:
 		current_year = value
 		year_button.text = str(current_year)
 signal _on_date_selected(date : Dictionary)
+@export var ui : CanvasLayer
 
 func _ready() -> void:
 	# Initialize current year and month
@@ -28,7 +29,7 @@ func _ready() -> void:
 	current_month = get_date_param("month")
 	generate_calender()
 	generate_year_selector()
-	hide()
+	ui.hide()
 
 # year, month, day, weekday, hour, minute, second, and dst (Daylight Savings Time)
 func get_date_param(param : String):
@@ -83,7 +84,7 @@ func generate_calender():
 func date_selected(day : int):
 	var selected_date = {"year" : current_year, "month" : current_month, "day" : day}
 	emit_signal("_on_date_selected", selected_date)
-	hide()
+	ui.hide()
 
 # Turn to previous month
 func _on_prev_month_btn_pressed() -> void:
@@ -159,4 +160,4 @@ func _on_year_button_button_down() -> void:
 
 
 func _on_close_button_pressed() -> void:
-	hide()
+	ui.hide()

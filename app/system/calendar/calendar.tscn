@@ -10,8 +10,7 @@ bg_color = Color(0.129558, 0.129558, 0.129558, 0.686275)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6mpg"]
 bg_color = Color(0.136826, 0.136826, 0.136826, 1)
 
-[node name="Calendar" type="Control" node_paths=PackedStringArray("month_label", "year_button", "days_grid", "year_selector", "scroll_container", "year_container")]
-z_index = 10
+[node name="Calendar" type="Control" node_paths=PackedStringArray("month_label", "year_button", "days_grid", "ui", "year_selector", "scroll_container", "year_container")]
 texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
@@ -21,16 +20,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cvoqh")
 script = ExtResource("2_d4rix")
-month_label = NodePath("PanelContainer/VBoxContainer/Header/MonthLabel")
-year_button = NodePath("PanelContainer/VBoxContainer/YearButton")
-days_grid = NodePath("PanelContainer/VBoxContainer/DaysGrid")
+month_label = NodePath("ui/PanelContainer/VBoxContainer/Header/MonthLabel")
+year_button = NodePath("ui/PanelContainer/VBoxContainer/YearButton")
+days_grid = NodePath("ui/PanelContainer/VBoxContainer/DaysGrid")
+ui = NodePath("ui")
 year_selector = NodePath("YearSelector")
 scroll_container = NodePath("YearSelector/ScrollContainer")
 year_container = NodePath("YearSelector/ScrollContainer/YearContainer")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="ui"]
 custom_minimum_size = Vector2(320, 320)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -44,10 +45,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d4rix")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/PanelContainer"]
 layout_mode = 2
 
-[node name="YearButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="YearButton" type="Button" parent="ui/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -55,29 +56,29 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "2025"
 
-[node name="Header" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Header" type="HBoxContainer" parent="ui/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="PrevMonthBtn" type="Button" parent="PanelContainer/VBoxContainer/Header"]
+[node name="PrevMonthBtn" type="Button" parent="ui/PanelContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "<"
 
-[node name="MonthLabel" type="Label" parent="PanelContainer/VBoxContainer/Header"]
+[node name="MonthLabel" type="Label" parent="ui/PanelContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 text = "Apr"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextMonthBtn" type="Button" parent="PanelContainer/VBoxContainer/Header"]
+[node name="NextMonthBtn" type="Button" parent="ui/PanelContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = ">"
 
-[node name="Weekdays" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Weekdays" type="HBoxContainer" parent="ui/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(320, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -85,7 +86,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 9
 alignment = 1
 
-[node name="Sunday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Sunday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -94,7 +95,7 @@ text = "Sunday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Monday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Monday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -103,7 +104,7 @@ text = "Monday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tuesday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Tuesday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -112,7 +113,7 @@ text = "Tuesday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Wednesday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Wednesday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -121,7 +122,7 @@ text = "Wednesday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Thursday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Thursday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -130,7 +131,7 @@ text = "Thursday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Friday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Friday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -139,7 +140,7 @@ text = "Friday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Saturday" type="Label" parent="PanelContainer/VBoxContainer/Weekdays"]
+[node name="Saturday" type="Label" parent="ui/PanelContainer/VBoxContainer/Weekdays"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -148,7 +149,7 @@ text = "Saturday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DaysGrid" type="GridContainer" parent="PanelContainer/VBoxContainer"]
+[node name="DaysGrid" type="GridContainer" parent="ui/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -156,7 +157,7 @@ theme_override_constants/h_separation = 9
 theme_override_constants/v_separation = 2
 columns = 7
 
-[node name="CloseButton" type="Button" parent="PanelContainer"]
+[node name="CloseButton" type="Button" parent="ui/PanelContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -198,7 +199,7 @@ size_flags_vertical = 6
 theme_override_constants/separation = 1
 alignment = 1
 
-[connection signal="button_down" from="PanelContainer/VBoxContainer/YearButton" to="." method="_on_year_button_button_down"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Header/PrevMonthBtn" to="." method="_on_prev_month_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Header/NextMonthBtn" to="." method="_on_next_month_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="button_down" from="ui/PanelContainer/VBoxContainer/YearButton" to="." method="_on_year_button_button_down"]
+[connection signal="pressed" from="ui/PanelContainer/VBoxContainer/Header/PrevMonthBtn" to="." method="_on_prev_month_btn_pressed"]
+[connection signal="pressed" from="ui/PanelContainer/VBoxContainer/Header/NextMonthBtn" to="." method="_on_next_month_btn_pressed"]
+[connection signal="pressed" from="ui/PanelContainer/CloseButton" to="." method="_on_close_button_pressed"]

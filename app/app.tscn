@@ -25,7 +25,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="App" type="Control" node_paths=PackedStringArray("todo_item_container", "todo_edit")]
+[node name="App" type="Control" node_paths=PackedStringArray("todo_item_container", "todo_edit", "clean_btn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +36,7 @@ theme = SubResource("Theme_cmvqw")
 script = ExtResource("1_bnw3p")
 todo_item_container = NodePath("PanelContainer/VBoxContainer/TodoDisplay/ScrollContainer/TodoItemContainer")
 todo_edit = NodePath("PanelContainer/VBoxContainer/TodoEdit")
+clean_btn = NodePath("PanelContainer/VBoxContainer/ToolBar/CleanBtn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -50,6 +51,21 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_e0wx5")
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
+
+[node name="ToolBar" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="CleanBtn" type="Button" parent="PanelContainer/VBoxContainer/ToolBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "清理已完成"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ToolBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "2025-01-01"
 
 [node name="TodoDisplay" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
 clip_contents = true
